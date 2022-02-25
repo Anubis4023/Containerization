@@ -38,7 +38,7 @@ int main () {
 
 
 }
-
+test
 void read_manifest (vector<vector<Container>>& ship) {
     ifstream manifest ("manifest.txt"); //Populate the grid with containers
     char buffer[11]; //Size of string that is before the weight
