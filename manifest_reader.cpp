@@ -40,7 +40,7 @@ int main () {
 }
 
 void read_manifest (vector<vector<Container>>& ship) {
-    ifstream manifest ("manifest.txt"); //Populate the grid with containers
+    ifstream manifest ("manifest_case4.txt"); //Populate the grid with containers
     char buffer[11]; //Size of string that is before the weight
     char buffer3[3];
     char buff_char;
