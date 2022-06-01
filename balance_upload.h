@@ -2,7 +2,8 @@
 #define BALANCE_UPLOAD_H
 
 #include "container.h"
-#include <QDialog>
+//comment
+#include <QDialog> 
 #include "balancecalc.h"
 
 extern int ROW;
