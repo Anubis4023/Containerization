@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QDate>
 #include <QFile>
+#include <QTextStream>
 
 Login::Login(QWidget *parent) :
     QDialog(parent),

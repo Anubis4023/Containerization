@@ -6,6 +6,7 @@
 #include <QTime>
 #include <QDate>
 #include <QMessageBox>
+#include <QTextStream>
 
 movements::movements(QWidget *parent) :
     QDialog(parent),

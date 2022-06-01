@@ -6,6 +6,7 @@
 #include <QTime>
 #include <QDate>
 #include <QFile>
+#include <QTextStream>
 
 Node answer;
 

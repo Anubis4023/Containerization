@@ -5,6 +5,7 @@
 #include <QDate>
 #include <QMessageBox>
 #include <QFile>
+#include <QTextStream>
 
 comment::comment(QWidget *parent) :
     QDialog(parent),

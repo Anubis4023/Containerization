@@ -5,6 +5,9 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QDate>
+#include <QList>
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -47,7 +50,7 @@ void Dialog::on_pushButton_clicked()
 
 
     //vector<vector<Container>> ship (ROW, vector<Container> (COLUMN, Container())); //Make empty ship grid
-           weights; //Make list for containers on the ship
+           //weights; //Make list for containers on the ship
            //cout << "got here" << endl;
            //ifstream manifest ("manifest.txt"); //Populate the grid with containers
            QFile manifest(file_n);
@@ -550,7 +553,7 @@ void Dialog::on__0_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_0->text());
     } else { //take the name off the list
@@ -565,7 +568,7 @@ void Dialog::on__0_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_1->text());
     } else { //take the name off the list
@@ -580,7 +583,7 @@ void Dialog::on__0_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_2->text());
     } else { //take the name off the list
@@ -595,7 +598,7 @@ void Dialog::on__0_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_3->text());
     } else { //take the name off the list
@@ -610,7 +613,7 @@ void Dialog::on__0_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_4->text());
     } else { //take the name off the list
@@ -625,7 +628,7 @@ void Dialog::on__0_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_5->text());
     } else { //take the name off the list
@@ -640,7 +643,7 @@ void Dialog::on__0_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_6->text());
     } else { //take the name off the list
@@ -655,7 +658,7 @@ void Dialog::on__0_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_7->text());
     } else { //take the name off the list
@@ -670,7 +673,7 @@ void Dialog::on__0_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_8->text());
     } else { //take the name off the list
@@ -685,7 +688,7 @@ void Dialog::on__0_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_9->text());
     } else { //take the name off the list
@@ -700,7 +703,7 @@ void Dialog::on__0_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_10->text());
     } else { //take the name off the list
@@ -715,7 +718,7 @@ void Dialog::on__0_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_0_11->text());
     } else { //take the name off the list
@@ -730,7 +733,7 @@ void Dialog::on__1_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_0->text());
     } else { //take the name off the list
@@ -745,7 +748,7 @@ void Dialog::on__1_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_1->text());
     } else { //take the name off the list
@@ -760,7 +763,7 @@ void Dialog::on__1_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_2->text());
     } else { //take the name off the list
@@ -775,7 +778,7 @@ void Dialog::on__1_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_3->text());
     } else { //take the name off the list
@@ -790,7 +793,7 @@ void Dialog::on__1_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_4->text());
     } else { //take the name off the list
@@ -805,7 +808,7 @@ void Dialog::on__1_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_5->text());
     } else { //take the name off the list
@@ -820,7 +823,7 @@ void Dialog::on__1_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_6->text());
     } else { //take the name off the list
@@ -835,7 +838,7 @@ void Dialog::on__1_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_7->text());
     } else { //take the name off the list
@@ -850,7 +853,7 @@ void Dialog::on__1_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_8->text());
     } else { //take the name off the list
@@ -865,7 +868,7 @@ void Dialog::on__1_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_9->text());
     } else { //take the name off the list
@@ -880,7 +883,7 @@ void Dialog::on__1_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_10->text());
     } else { //take the name off the list
@@ -895,7 +898,7 @@ void Dialog::on__1_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_1_11->text());
     } else { //take the name off the list
@@ -910,7 +913,7 @@ void Dialog::on__2_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_0->text());
     } else { //take the name off the list
@@ -925,7 +928,7 @@ void Dialog::on__2_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_1->text());
     } else { //take the name off the list
@@ -940,7 +943,7 @@ void Dialog::on__2_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_2->text());
     } else { //take the name off the list
@@ -955,7 +958,7 @@ void Dialog::on__2_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_3->text());
     } else { //take the name off the list
@@ -970,7 +973,7 @@ void Dialog::on__2_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_4->text());
     } else { //take the name off the list
@@ -985,7 +988,7 @@ void Dialog::on__2_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_5->text());
     } else { //take the name off the list
@@ -1000,7 +1003,7 @@ void Dialog::on__2_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_6->text());
     } else { //take the name off the list
@@ -1015,7 +1018,7 @@ void Dialog::on__2_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_7->text());
     } else { //take the name off the list
@@ -1030,7 +1033,7 @@ void Dialog::on__2_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_8->text());
     } else { //take the name off the list
@@ -1045,7 +1048,7 @@ void Dialog::on__2_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_9->text());
     } else { //take the name off the list
@@ -1060,7 +1063,7 @@ void Dialog::on__2_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_10->text());
     } else { //take the name off the list
@@ -1075,7 +1078,7 @@ void Dialog::on__2_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_2_11->text());
     } else { //take the name off the list
@@ -1090,7 +1093,7 @@ void Dialog::on__3_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_0->text());
     } else { //take the name off the list
@@ -1105,7 +1108,7 @@ void Dialog::on__3_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_1->text());
     } else { //take the name off the list
@@ -1120,7 +1123,7 @@ void Dialog::on__3_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_2->text());
     } else { //take the name off the list
@@ -1135,7 +1138,7 @@ void Dialog::on__3_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_3->text());
     } else { //take the name off the list
@@ -1150,7 +1153,7 @@ void Dialog::on__3_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_4->text());
     } else { //take the name off the list
@@ -1165,7 +1168,7 @@ void Dialog::on__3_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_5->text());
     } else { //take the name off the list
@@ -1180,7 +1183,7 @@ void Dialog::on__3_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_6->text());
     } else { //take the name off the list
@@ -1195,7 +1198,7 @@ void Dialog::on__3_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_7->text());
     } else { //take the name off the list
@@ -1210,7 +1213,7 @@ void Dialog::on__3_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_8->text());
     } else { //take the name off the list
@@ -1225,7 +1228,7 @@ void Dialog::on__3_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_9->text());
     } else { //take the name off the list
@@ -1240,7 +1243,7 @@ void Dialog::on__3_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_10->text());
     } else { //take the name off the list
@@ -1255,7 +1258,7 @@ void Dialog::on__3_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_3_11->text());
     } else { //take the name off the list
@@ -1270,7 +1273,7 @@ void Dialog::on__4_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_0->text());
     } else { //take the name off the list
@@ -1285,7 +1288,7 @@ void Dialog::on__4_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_1->text());
     } else { //take the name off the list
@@ -1300,7 +1303,7 @@ void Dialog::on__4_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_2->text());
     } else { //take the name off the list
@@ -1315,7 +1318,7 @@ void Dialog::on__4_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_3->text());
     } else { //take the name off the list
@@ -1330,7 +1333,7 @@ void Dialog::on__4_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_4->text());
     } else { //take the name off the list
@@ -1345,7 +1348,7 @@ void Dialog::on__4_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_5->text());
     } else { //take the name off the list
@@ -1360,7 +1363,7 @@ void Dialog::on__4_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_6->text());
     } else { //take the name off the list
@@ -1375,7 +1378,7 @@ void Dialog::on__4_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_7->text());
     } else { //take the name off the list
@@ -1390,7 +1393,7 @@ void Dialog::on__4_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_8->text());
     } else { //take the name off the list
@@ -1405,7 +1408,7 @@ void Dialog::on__4_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_9->text());
     } else { //take the name off the list
@@ -1420,7 +1423,7 @@ void Dialog::on__4_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_10->text());
     } else { //take the name off the list
@@ -1435,7 +1438,7 @@ void Dialog::on__4_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_4_11->text());
     } else { //take the name off the list
@@ -1450,7 +1453,7 @@ void Dialog::on__5_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_0->text());
     } else { //take the name off the list
@@ -1465,7 +1468,7 @@ void Dialog::on__5_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_1->text());
     } else { //take the name off the list
@@ -1480,7 +1483,7 @@ void Dialog::on__5_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_2->text());
     } else { //take the name off the list
@@ -1495,7 +1498,7 @@ void Dialog::on__5_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_3->text());
     } else { //take the name off the list
@@ -1510,7 +1513,7 @@ void Dialog::on__5_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_4->text());
     } else { //take the name off the list
@@ -1525,7 +1528,7 @@ void Dialog::on__5_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_5->text());
     } else { //take the name off the list
@@ -1540,7 +1543,7 @@ void Dialog::on__5_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_6->text());
     } else { //take the name off the list
@@ -1555,7 +1558,7 @@ void Dialog::on__5_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_7->text());
     } else { //take the name off the list
@@ -1570,7 +1573,7 @@ void Dialog::on__5_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_8->text());
     } else { //take the name off the list
@@ -1585,7 +1588,7 @@ void Dialog::on__5_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_9->text());
     } else { //take the name off the list
@@ -1600,7 +1603,7 @@ void Dialog::on__5_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_10->text());
     } else { //take the name off the list
@@ -1615,7 +1618,7 @@ void Dialog::on__5_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_5_11->text());
     } else { //take the name off the list
@@ -1630,7 +1633,7 @@ void Dialog::on__6_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_0->text());
     } else { //take the name off the list
@@ -1645,7 +1648,7 @@ void Dialog::on__6_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_1->text());
     } else { //take the name off the list
@@ -1660,7 +1663,7 @@ void Dialog::on__6_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_2->text());
     } else { //take the name off the list
@@ -1675,7 +1678,7 @@ void Dialog::on__6_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_3->text());
     } else { //take the name off the list
@@ -1690,7 +1693,7 @@ void Dialog::on__6_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_4->text());
     } else { //take the name off the list
@@ -1705,7 +1708,7 @@ void Dialog::on__6_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_5->text());
     } else { //take the name off the list
@@ -1720,7 +1723,7 @@ void Dialog::on__6_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_6->text());
     } else { //take the name off the list
@@ -1735,7 +1738,7 @@ void Dialog::on__6_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_7->text());
     } else { //take the name off the list
@@ -1750,7 +1753,7 @@ void Dialog::on__6_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_8->text());
     } else { //take the name off the list
@@ -1765,7 +1768,7 @@ void Dialog::on__6_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_9->text());
     } else { //take the name off the list
@@ -1780,7 +1783,7 @@ void Dialog::on__6_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_10->text());
     } else { //take the name off the list
@@ -1795,7 +1798,7 @@ void Dialog::on__6_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_6_11->text());
     } else { //take the name off the list
@@ -1810,7 +1813,7 @@ void Dialog::on__7_0_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_0->text());
     } else { //take the name off the list
@@ -1825,7 +1828,7 @@ void Dialog::on__7_1_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_1->text());
     } else { //take the name off the list
@@ -1840,7 +1843,7 @@ void Dialog::on__7_2_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_2->text());
     } else { //take the name off the list
@@ -1855,7 +1858,7 @@ void Dialog::on__7_3_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_3->text());
     } else { //take the name off the list
@@ -1870,7 +1873,7 @@ void Dialog::on__7_4_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_4->text());
     } else { //take the name off the list
@@ -1885,7 +1888,7 @@ void Dialog::on__7_5_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_5->text());
     } else { //take the name off the list
@@ -1900,7 +1903,7 @@ void Dialog::on__7_6_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_6->text());
     } else { //take the name off the list
@@ -1915,7 +1918,7 @@ void Dialog::on__7_7_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_7->text());
     } else { //take the name off the list
@@ -1930,7 +1933,7 @@ void Dialog::on__7_8_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_8->text());
     } else { //take the name off the list
@@ -1945,7 +1948,7 @@ void Dialog::on__7_9_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_9->text());
     } else { //take the name off the list
@@ -1960,7 +1963,7 @@ void Dialog::on__7_10_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_10->text());
     } else { //take the name off the list
@@ -1975,7 +1978,7 @@ void Dialog::on__7_11_clicked()
         return;
     }
     string name = Qname.toStdString();
-    QList find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
+    QList<QListWidgetItem*> find = ui->listWidget->findItems(Qname, Qt::MatchExactly);
     if (find.isEmpty()) { //add the name to the list
         ui->listWidget->addItem(ui->_7_11->text());
     } else { //take the name off the list
