@@ -86,8 +86,8 @@ function xAnimate(pos1, pos2, context) {
             }
             //y += 115;
             context.putImageData(imgData, x, y);
-            console.log("Put rect at x:", x);
-            console.log("Put rect at y:", y);
+            //console.log("Put rect at x:", x);
+            //console.log("Put rect at y:", y);
 
             ++iter;
 
@@ -106,7 +106,7 @@ function yAnimate(pos1, pos2, context) {
     let x = 2 + pos1[1]*157.5 + (pos2[1]-pos1[1])*157.5;
     let y = 2 + pos1[0]*115;
 
-    console.log(x, y);
+    //console.log(x, y);
 
     //let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
     let vertical = pos2[0] - pos1[0]; //How many times to move across the y axis
@@ -117,22 +117,24 @@ function yAnimate(pos1, pos2, context) {
     }
 
     let iter = 0;
-    const id = setInterval(() => { //Animation to move across the x axis
-        let imgData = context.getImageData(x, y, cw, ch);
-        context.clearRect(x, y, cw, ch); 
-        if (negative) {
-            y -= 115;
-        } else {
-            y += 115;
-        }
-        context.putImageData(imgData, x, y);
+    if (vertical > 0) {
+        const id = setInterval(() => { //Animation to move across the x axis
+            let imgData = context.getImageData(x, y, cw, ch);
+            context.clearRect(x, y, cw, ch); 
+            if (negative) {
+                y -= 115;
+            } else {
+                y += 115;
+            }
+            context.putImageData(imgData, x, y);
 
-        ++iter;
+            ++iter;
 
-        if (iter >= vertical ) {
-            clearInterval(id);
-        }
-    }, speed);
+            if (iter >= vertical ) {
+                clearInterval(id);
+            }
+        }, speed);
+    }
 }
 
 function animateMove(context, pos1, pos2, i) { //Draws the animation of a crate moving
@@ -140,9 +142,19 @@ function animateMove(context, pos1, pos2, i) { //Draws the animation of a crate 
     console.log(pos1);
     console.log(pos2);
 
+    if (pos2[0] == '-1') {
+        console.log("here");
+        pos2 = [0,0];
+    }
+    
     xAnimate(pos1, pos2, context);
     setTimeout(yAnimate, speed*Math.abs(pos2[0]-pos1[0]), pos1, pos2, context);
 
+}
+
+function clear(context) {
+    console.log('clearing');
+    context.clearRect(2, 2, cw, ch);
 }
 
 
@@ -192,12 +204,18 @@ function readFile_loaded(input) {
 
     console.log(movements[0]);
     let waitTime = 0;
+    let lastTime = 0;
     for (let i = 0; i < movements.length; ++i) {
-        
+        if (i == (movements.length-1)) {
+            lastTime = waitTime + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]);
+        }
+
         setTimeout(animateMove, waitTime + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]), context, [movements[i][0], movements[i][1]], [movements[i][2], movements[i][3]],i )
         waitTime = 2000 + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]);
         //animateMove(context, [movements[i][0], movements[i][1]], [movements[i][2], movements[i][3]]);
     }
+    //console.log("Wait time is: ", 2000+waitTime+lastTime);
+    setTimeout(clear, waitTime + lastTime + 2000, context);
     //animateMove(context);
     
 }
