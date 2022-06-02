@@ -23,6 +23,9 @@ var cw = 154;
 //Crate height
 var ch = 112;
 
+//Set speed of animation
+var speed = 700;
+
 //var canvas = document.getElementById("myCanvas");
 //var context = canvas.getContext("2d");
 
@@ -58,47 +61,60 @@ function drawCrates(positions, context) { //Draws the crates that are already pr
 }
 
 function xAnimate(pos1, pos2, context) {
-    let x = 2 + pos1[0]*157.5;
-    let y = 2 + pos1[1]*115;
+    
+    let x = 2 + pos1[1]*157.5;
+    let y = 2 + pos1[0]*115;
 
-    let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
+    //console.log('here');
+
+    let horizontal = Math.abs(pos2[1] - pos1[1]); //How many times to move across the x axis
     //let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
 
     let iter = 0;
-    const id = setInterval(() => { //Animation to move across the x axis
-        let imgData = context.getImageData(x, y, cw, ch);
-        context.clearRect(x, y, cw, ch); 
-        x += 157.5;
-        //y += 115;
-        context.putImageData(imgData, x, y);
+    if (horizontal > 0) {
+        const id = setInterval(() => { //Animation to move across the x axis
+            let imgData = context.getImageData(x, y, cw, ch);
+            context.clearRect(x, y, cw, ch); 
+            x += 157.5;
+            //y += 115;
+            context.putImageData(imgData, x, y);
 
-        ++iter;
+            ++iter;
 
-        if (iter >= horizontal ) {
-            
-            clearInterval(id);
-            
-        }
-    }, 400);
-    
+            if (iter >= horizontal ) {
+                
+                clearInterval(id);
+                
+            }
+        }, speed);
+    }
 }
 
 function yAnimate(pos1, pos2, context) {
-    //alert('here');
-    let x = 2 + pos1[0]*157.5 + (pos2[0]-pos1[0])*157.5;
-    let y = 2 + pos1[1]*115;
+    let negative = false;
 
-    alert(x);
+    let x = 2 + pos1[1]*157.5 + Math.abs((pos2[1]-pos1[1]))*157.5;
+    let y = 2 + pos1[0]*115;
+
+    console.log(x, y);
 
     //let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
-    let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
+    let vertical = pos2[0] - pos1[0]; //How many times to move across the y axis
+    if (vertical < 0) { //If it's negative, it means the crate has to move up, so the y should be minus the movement
+                        //else if it's positive, add the movement size number
+        negative = true;
+        vertical = Math.abs(vertical);
+    }
 
     let iter = 0;
     const id = setInterval(() => { //Animation to move across the x axis
         let imgData = context.getImageData(x, y, cw, ch);
         context.clearRect(x, y, cw, ch); 
-        //x += 157.5;
-        y += 115;
+        if (negative) {
+            y -= 115;
+        } else {
+            y += 115;
+        }
         context.putImageData(imgData, x, y);
 
         ++iter;
@@ -106,61 +122,16 @@ function yAnimate(pos1, pos2, context) {
         if (iter >= vertical ) {
             clearInterval(id);
         }
-    }, 400);
+    }, speed);
 }
 
-function animateMove(context, pos1, pos2) { //Draws the animation of a crate moving
-    /*for (let y = 0; y < 920; y += 115) {
-        for (let x = 0; x < 1890; x += 157.5) {
-            context.fillStyle = generateRandomColor();
-            context.clearRect(2 + x - 157.5, 2 + y - 115, cw, ch);
-            context.fillRect(2 + x, 2 + y, cw, ch);
-        }
-    }*/
-    //Pos1 has an array for position 1, same for pos2
-    
-
-    pos1 = [0, 0];
-    pos2 = [11, 7];
+function animateMove(context, pos1, pos2, i) { //Draws the animation of a crate moving
+    //console.log("iteration ", i);
+    console.log(pos1);
+    console.log(pos2);
 
     xAnimate(pos1, pos2, context);
-    setTimeout(yAnimate, 400*(pos2[0]-pos1[0]), pos1, pos2, context);
-
-    // let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
-    // let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
-
-    // let x = 2 + pos1[0]*157.5;
-    // let y = 2 + pos1[1]*115;
-
-    // let iter = 0;
-    // const id = setInterval(() => { //Animation to move across the x axis
-    //     let imgData = context.getImageData(x, y, cw, ch);
-    //     context.clearRect(x, y, cw, ch); 
-    //     x += 157.5;
-    //     //y += 115;
-    //     context.putImageData(imgData, x, y);
-
-    //     ++iter;
-
-    //     if (iter >= horizontal ) {
-    //         clearInterval(id);
-    //     }
-    // }, 400);
-
-    // iter = 0;
-    // const id2 = setInterval(() => { //Animation to move across the x axis
-    //     let imgData = context.getImageData(x, y, cw, ch);
-    //     context.clearRect(x, y, cw, ch); 
-    //     //x += 157.5;
-    //     y += 115;
-    //     context.putImageData(imgData, x, y);
-
-    //     ++iter;
-
-    //     if (iter >= vertical ) {
-    //         clearInterval(id2);
-    //     }
-    // }, 400);
+    setTimeout(yAnimate, speed*Math.abs(pos2[0]-pos1[0]), pos1, pos2, context);
 
 }
 
@@ -172,29 +143,53 @@ function readFile_loaded(input) {
 
   reader.readAsText(file);
 
-  reader.onload = function() {
+  reader.onload = function() { 
+
     console.log(reader.result);
     //var string = reader.result;
     //alert(reader.result);
     const locations = reader.result.split(/\r?\n/);
     let positions = [];
+    let movements = [];
+
+    let separate = false;
 
     for (let i = 0; i < locations.length; ++i) {
-        const matches = locations[i].match(/\d+/g);
-        positions.push([matches[0], matches[1]]);
-        //alert([matches[0], matches[1]]);
+        //const matches = locations[i].match(/\d+/g);
+        const matches = locations[i].match(/-?\d+/g);
+        if (matches[0] == '-1' && matches[1] == '-1') {
+            //console.log('true');
+            separate = true;
+            continue;
+        }
+
+        if (!separate) {
+            positions.push(matches);
+            //console.log(matches);
+        } else {
+            movements.push(matches);
+        }
     }
 
     const input = document.getElementById('select-file');
     input.remove();
     let canvas = document.getElementById("myCanvas");
     let context = canvas.getContext("2d");
+
+    //THIS IS BASICALLY MAIN FOR NOW
     drawBoard(context);
     drawCrates(positions, context);
 
-    animateMove(context);
-    //alert("here");
-    //drawCrates(positions, context);
+    console.log(movements[0]);
+    let waitTime = 0;
+    for (let i = 0; i < movements.length; ++i) {
+        
+        setTimeout(animateMove, waitTime + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]), context, [movements[i][0], movements[i][1]], [movements[i][2], movements[i][3]],i )
+        waitTime = 2000 + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]);
+        //animateMove(context, [movements[i][0], movements[i][1]], [movements[i][2], movements[i][3]]);
+    }
+    //animateMove(context);
+    
 }
 
   reader.onerror = function() {
