@@ -46,9 +46,10 @@ function drawCrates(positions) { //Draws the crates that are already present
 
 function animateMove() {} //Draws the animation of a crate moving
 
-drawBoard();
+//drawBoard();
 let positions = [[0,0], [0,3]];
-drawCrates(positions);
+//drawCrates(positions);
+
 //drawCrates([0,0]);
 
 

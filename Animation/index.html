@@ -6,8 +6,212 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
+<input type="file" onchange="readFile_loaded(this)" id = "select-file">
+
 <canvas id="myCanvas" width="1890" height="920" style="border: 2px solid"></canvas>
-<script src="drawing.js"></script>
+<script>
+    // Box width
+var bw = 1890;
+// Box height
+var bh = 920;
+// Padding
+var p = 0;
+
+//Crate width
+var cw = 154;
+//Crate height
+var ch = 112;
+
+//var canvas = document.getElementById("myCanvas");
+//var context = canvas.getContext("2d");
+
+function drawBoard(context){ //Draws the 8x12 grid
+    for (let x = 0; x <= bw; x += bw/12) {
+        context.moveTo(0.5 + x + p, p);
+        context.lineTo(0.5 + x + p, bh + p);
+    }
+
+    for (let x = 0; x <= bh; x += bh/8) {
+        context.moveTo(p, 0.5 + x + p);
+        context.lineTo(bw + p, 0.5 + x + p);
+    }
+    context.strokeStyle = "black";
+    context.lineWidth = 4;
+    context.stroke();
+}
+
+function generateRandomColor(){
+    let maxVal = 0xFFFFFF; // 16777215
+    let randomNumber = Math.random() * maxVal; 
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);   
+    return `#${randColor.toUpperCase()}`
+}
+
+function drawCrates(positions, context) { //Draws the crates that are already present
+    for (let i = 0; i < positions.length; ++i) {
+        context.fillStyle = generateRandomColor();
+        context.fillRect(2 + 157.5*positions[i][1], 2 + 115*positions[i][0], cw, ch);
+    }
+}
+
+function xAnimate(pos1, pos2, context) {
+    let x = 2 + pos1[0]*157.5;
+    let y = 2 + pos1[1]*115;
+
+    let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
+    //let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
+
+    let iter = 0;
+    const id = setInterval(() => { //Animation to move across the x axis
+        let imgData = context.getImageData(x, y, cw, ch);
+        context.clearRect(x, y, cw, ch); 
+        x += 157.5;
+        //y += 115;
+        context.putImageData(imgData, x, y);
+
+        ++iter;
+
+        if (iter >= horizontal ) {
+            
+            clearInterval(id);
+            
+        }
+    }, 400);
+    
+}
+
+function yAnimate(pos1, pos2, context) {
+    //alert('here');
+    let x = 2 + pos1[0]*157.5 + (pos2[0]-pos1[0])*157.5;
+    let y = 2 + pos1[1]*115;
+
+    alert(x);
+
+    //let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
+    let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
+
+    let iter = 0;
+    const id = setInterval(() => { //Animation to move across the x axis
+        let imgData = context.getImageData(x, y, cw, ch);
+        context.clearRect(x, y, cw, ch); 
+        //x += 157.5;
+        y += 115;
+        context.putImageData(imgData, x, y);
+
+        ++iter;
+
+        if (iter >= vertical ) {
+            clearInterval(id);
+        }
+    }, 400);
+}
+
+function animateMove(context, pos1, pos2) { //Draws the animation of a crate moving
+    /*for (let y = 0; y < 920; y += 115) {
+        for (let x = 0; x < 1890; x += 157.5) {
+            context.fillStyle = generateRandomColor();
+            context.clearRect(2 + x - 157.5, 2 + y - 115, cw, ch);
+            context.fillRect(2 + x, 2 + y, cw, ch);
+        }
+    }*/
+    //Pos1 has an array for position 1, same for pos2
+    
+
+    pos1 = [0, 0];
+    pos2 = [11, 7];
+
+    xAnimate(pos1, pos2, context);
+    setTimeout(yAnimate, 400*(pos2[0]-pos1[0]), pos1, pos2, context);
+
+    // let horizontal = pos2[0] - pos1[0]; //How many times to move across the x axis
+    // let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
+
+    // let x = 2 + pos1[0]*157.5;
+    // let y = 2 + pos1[1]*115;
+
+    // let iter = 0;
+    // const id = setInterval(() => { //Animation to move across the x axis
+    //     let imgData = context.getImageData(x, y, cw, ch);
+    //     context.clearRect(x, y, cw, ch); 
+    //     x += 157.5;
+    //     //y += 115;
+    //     context.putImageData(imgData, x, y);
+
+    //     ++iter;
+
+    //     if (iter >= horizontal ) {
+    //         clearInterval(id);
+    //     }
+    // }, 400);
+
+    // iter = 0;
+    // const id2 = setInterval(() => { //Animation to move across the x axis
+    //     let imgData = context.getImageData(x, y, cw, ch);
+    //     context.clearRect(x, y, cw, ch); 
+    //     //x += 157.5;
+    //     y += 115;
+    //     context.putImageData(imgData, x, y);
+
+    //     ++iter;
+
+    //     if (iter >= vertical ) {
+    //         clearInterval(id2);
+    //     }
+    // }, 400);
+
+}
+
+
+function readFile_loaded(input) {
+  let file = input.files[0];
+
+  let reader = new FileReader();
+
+  reader.readAsText(file);
+
+  reader.onload = function() {
+    console.log(reader.result);
+    //var string = reader.result;
+    //alert(reader.result);
+    const locations = reader.result.split(/\r?\n/);
+    let positions = [];
+
+    for (let i = 0; i < locations.length; ++i) {
+        const matches = locations[i].match(/\d+/g);
+        positions.push([matches[0], matches[1]]);
+        //alert([matches[0], matches[1]]);
+    }
+
+    const input = document.getElementById('select-file');
+    input.remove();
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    drawBoard(context);
+    drawCrates(positions, context);
+
+    animateMove(context);
+    //alert("here");
+    //drawCrates(positions, context);
+}
+
+  reader.onerror = function() {
+    console.log(reader.error);
+  };
+}
+
+readFile_loaded();
+
+
+//alert(string);
+//drawBoard();
+//let positions = [[0,0], [0,3]];
+//drawCrates(positions);
+
+
+</script>
     
     
 <body> 
