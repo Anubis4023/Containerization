@@ -61,13 +61,17 @@ function drawCrates(positions, context) { //Draws the crates that are already pr
 }
 
 function xAnimate(pos1, pos2, context) {
-    
+    let negative = false;
     let x = 2 + pos1[1]*157.5;
     let y = 2 + pos1[0]*115;
 
     //console.log('here');
 
-    let horizontal = Math.abs(pos2[1] - pos1[1]); //How many times to move across the x axis
+    let horizontal = pos2[1] - pos1[1]; //How many times to move across the x axis
+    if (horizontal < 0) {
+        negative = true;
+        horizontal = Math.abs(horizontal);
+    }
     //let vertical = pos2[1] - pos1[1]; //How many times to move across the y axis
 
     let iter = 0;
@@ -75,9 +79,15 @@ function xAnimate(pos1, pos2, context) {
         const id = setInterval(() => { //Animation to move across the x axis
             let imgData = context.getImageData(x, y, cw, ch);
             context.clearRect(x, y, cw, ch); 
-            x += 157.5;
+            if (negative) {
+                x -= 157.5;
+            } else {
+                x += 157.5;
+            }
             //y += 115;
             context.putImageData(imgData, x, y);
+            console.log("Put rect at x:", x);
+            console.log("Put rect at y:", y);
 
             ++iter;
 
@@ -93,7 +103,7 @@ function xAnimate(pos1, pos2, context) {
 function yAnimate(pos1, pos2, context) {
     let negative = false;
 
-    let x = 2 + pos1[1]*157.5 + Math.abs((pos2[1]-pos1[1]))*157.5;
+    let x = 2 + pos1[1]*157.5 + (pos2[1]-pos1[1])*157.5;
     let y = 2 + pos1[0]*115;
 
     console.log(x, y);
