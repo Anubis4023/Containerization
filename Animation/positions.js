@@ -11,23 +11,23 @@ function syncReadFile(filename) {
   return arr;
 }
 
-function findLocations(locations) {
-    const matches = locations[3].match(/\d+/g);
-    let positions = []
+export function findMoves() {
+    const locations = syncReadFile('animation.txt');
+    let positions = [];
 
-    for (let i = 0; i < matches.length; i += 2) {
-        let position = matches[i] + "." + matches[i+1];
-        //console.log(position)
-        positions.push(position)
+    for (let i = 0; i < locations.length; ++i) {
+        const matches = locations[i].match(/\d+/g);
+        positions.push([matches[0], matches[1], matches[2], matches[3]]);
     }
 
     return positions;
 }
 
-const data = syncReadFile('animation.txt');
-const positions = findLocations(data);
+//console.log(findMoves());
 
 /*for (let i = 0; i < positions.length; ++i) {
     console.log(positions[i])
 }*/
+
+
 
