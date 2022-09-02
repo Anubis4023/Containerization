@@ -48,7 +48,7 @@ void movements::on_pushButton_clicked()
 
     int iter = 1;
     for (int i = 0; i < answer.position.size(); i += 2) {
-           QString move = QString::fromStdString(to_string(iter) + ". From position (" + to_string(abs(answer.position.at(i).first-8)) + ", " + to_string(answer.position.at(i).second+1) + ") to (" + to_string(abs(answer.position.at(i+1).first-8)) + ", " + to_string(answer.position.at(i+1).second+1) + ")");
+           QString move = QString::fromStdString(to_string(iter) + ". 23From position (" + to_string(abs(answer.position.at(i).first-8)) + ", " + to_string(answer.position.at(i).second+1) + ") to (" + to_string(abs(answer.position.at(i+1).first-8)) + ", " + to_string(answer.position.at(i+1).second+1) + ")");
              ui->listWidget->addItem(move);
              ++iter;
             //cout << "cost: " << answer.costMoves.at(i) << endl << endl;
