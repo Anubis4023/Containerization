@@ -35,7 +35,7 @@ void comment::on_pushButton_clicked()
 
         QTime time = QTime::currentTime();
         QDate date = QDate::currentDate();
-        QString time_text = date.toString("MM/dd/yyyy") + " " +time.toString("hh:mm:ss");
+        QString time_text = date.toString("MM/dd/yyyy") + " " +time.toString("hh:mm:ss") + " ";
         time_text += ui->lineEdit->text() + "\n";
         out << time_text;
         file.flush();

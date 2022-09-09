@@ -65,7 +65,7 @@ function xAnimate(pos1, pos2, context) {
     let x = 2 + pos1[1]*157.5;
     let y = 2 + pos1[0]*115;
 
-    //console.log('here');
+    
 
     let horizontal = pos2[1] - pos1[1]; //How many times to move across the x axis
     if (horizontal < 0) {
@@ -76,6 +76,7 @@ function xAnimate(pos1, pos2, context) {
 
     let iter = 0;
     if (horizontal > 0) {
+        
         const id = setInterval(() => { //Animation to move across the x axis
             let imgData = context.getImageData(x, y, cw, ch);
             context.clearRect(x, y, cw, ch); 
@@ -86,9 +87,7 @@ function xAnimate(pos1, pos2, context) {
             }
             //y += 115;
             context.putImageData(imgData, x, y);
-            //console.log("Put rect at x:", x);
-            //console.log("Put rect at y:", y);
-
+            //console.log("X Animation on ", pos1, " and ", pos2, ". Put rect at x:", x, ". Put rect at y:", y);
             ++iter;
 
             if (iter >= horizontal ) {
@@ -101,6 +100,7 @@ function xAnimate(pos1, pos2, context) {
 }
 
 function yAnimate(pos1, pos2, context) {
+    //console.log("doing y animate")
     let negative = false;
 
     let x = 2 + pos1[1]*157.5 + (pos2[1]-pos1[1])*157.5;
@@ -139,8 +139,7 @@ function yAnimate(pos1, pos2, context) {
 
 function animateMove(context, pos1, pos2, i) { //Draws the animation of a crate moving
     //console.log("iteration ", i);
-    console.log(pos1);
-    console.log(pos2);
+    //console.log("Moving ", pos1, " to ", pos2);
 
     if (pos2[0] == '-1') {
         console.log("here");
@@ -148,12 +147,12 @@ function animateMove(context, pos1, pos2, i) { //Draws the animation of a crate 
     }
     
     xAnimate(pos1, pos2, context);
-    setTimeout(yAnimate, speed*Math.abs(pos2[0]-pos1[0]), pos1, pos2, context);
+    setTimeout(yAnimate, speed*Math.abs(pos2[1]-pos1[1]), pos1, pos2, context);
 
 }
 
 function clear(context) {
-    console.log('clearing');
+    //console.log('clearing');
     context.clearRect(2, 2, cw, ch);
 }
 
@@ -167,7 +166,7 @@ function readFile_loaded(input) {
 
   reader.onload = function() { 
 
-    console.log(reader.result);
+    //console.log(reader.result);
     //var string = reader.result;
     //alert(reader.result);
     const locations = reader.result.split(/\r?\n/);
@@ -202,7 +201,8 @@ function readFile_loaded(input) {
     drawBoard(context);
     drawCrates(positions, context);
 
-    console.log(movements[0]);
+    //console.log("Size of movements: ", movements.length);
+    //console.log(movements[0]);
     let waitTime = 0;
     let lastTime = 0;
     for (let i = 0; i < movements.length; ++i) {
@@ -211,11 +211,11 @@ function readFile_loaded(input) {
         }
 
         setTimeout(animateMove, waitTime + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]), context, [movements[i][0], movements[i][1]], [movements[i][2], movements[i][3]],i )
-        waitTime = 2000 + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]);
+        waitTime += 2000 + speed*Math.abs(movements[i][2]-movements[i][0]) + speed*Math.abs(movements[i][3]-movements[i][1]);
         //animateMove(context, [movements[i][0], movements[i][1]], [movements[i][2], movements[i][3]]);
     }
     //console.log("Wait time is: ", 2000+waitTime+lastTime);
-    setTimeout(clear, waitTime + lastTime + 2000, context);
+    setTimeout(clear, waitTime + lastTime + 2500, context);
     //animateMove(context);
     
 }
