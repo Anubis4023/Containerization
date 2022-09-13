@@ -15,7 +15,7 @@ bool offloading_goal (Node& grid, vector<Container>& offload) { //or keep track 
 // and then just check if the list of offloaded matches with what we wanted offloaded
     for (int i = 0; i < ROW+2; ++i) {
         for (int j = 0; j < COLUMN; ++j) {
-            for (int h = 0; h < offload.size(); ++h) {
+            for (unsigned long long h = 0; h < offload.size(); ++h) {
                 if (grid.state[i][j].weight == offload.at(h).weight && grid.state[i][j].name == offload.at(h).name) {
                     return false;
                 }

@@ -122,7 +122,7 @@ int Misplaced (Node& node) {
     for (int i = 0; i < ROW; ++i) {
         for (int j = 0; j < COLUMN; ++j) {
             if ((node.state[i][j].weight > 0) && node.state[i][j].weight != solution[i][j].weight) {
-                for (int h = 0; h < containers.size(); ++h) {
+                for (unsigned long long h = 0; h < containers.size(); ++h) {
                     if (containers.at(h).weight == node.state[i][j].weight) {
                         heuristic += abs(j - containers.at(h).sColumn) + abs(i - containers.at(h).sRow);
                     }
@@ -252,7 +252,7 @@ int Deficit(Node node) { //heuristic
     int right = weightR(node);
     int upper = ((left + right) * .10)/4 + (left+right)/2;
     int lower = (left+right)/2 - ((left + right) * .10)/4;
-    int deficit = -1;
+    //int deficit = -1;
 
     int emptyCol = -1;
     int weight = 0;
@@ -298,7 +298,7 @@ int Deficit(Node node) { //heuristic
     }
     end:
     sort(containers.begin(), containers.end(), compareContainer); //sort from heaviest to lightest
-    for (int i = 0; i < containers.size(); ++i) {
+    for (unsigned long long i = 0; i < containers.size(); ++i) {
         if ((containers.at(i).weight + weight <= upper)) {
             weight += containers.at(i).weight;
             heuristic += abs(containers.at(i).column - emptyCol);
@@ -369,7 +369,7 @@ int Remove (Node& node, vector<Container>& offload) {
     int heuristic = 0;
     for (int i = 0; i < ROW; ++i) {
         for (int j = 0; j < COLUMN; ++j) {
-            for (int a = 0; a < offload.size(); ++a) {
+            for (unsigned long long a = 0; a < offload.size(); ++a) {
                 if (offload.at(a).name == node.state[i][j].name) {
                     heuristic += i + j + 1;
                 }
@@ -675,7 +675,7 @@ int emptyPinkHeur(Node& node) {
 
 
 bool checkOffload (Node& node, vector<Container>& offload) {
-    for (int i = 0; i < offload.size(); ++i) {
+    for (unsigned long long i = 0; i < offload.size(); ++i) {
         if (offload.at(i).name == node.state[node.rowPicked][node.columnPicked].name) {
             return true;
         }
@@ -865,8 +865,8 @@ void read_manifest (vector<vector<Container>>& ship , vector<Container>& weights
 
 void OutputGrid (vector<vector<Container>>& ship, int option) {
     //option 1 is weight, option 2 is name, option 3 is position
-    for (int i = 0; i < ship.size(); ++i) {
-        for (int j = 0; j < ship.at(0).size(); ++j) {
+    for (unsigned long long i = 0; i < ship.size(); ++i) {
+        for (unsigned long long j = 0; j < ship.at(0).size(); ++j) {
             if (option == 1) {
                 cout << ship[i][j].weight << " ";
             } else if (option == 2) {
@@ -881,7 +881,7 @@ void OutputGrid (vector<vector<Container>>& ship, int option) {
 }
 
 void OutputList (const vector<Container>& weights) {
-    for (int i = 0; i < weights.size(); ++i) {
+    for (unsigned long long i = 0; i < weights.size(); ++i) {
         Container temp = weights.at(i);
         cout << temp.name << " " << temp.weight << " " << temp.row << "." << temp.column << endl;
     }
@@ -907,7 +907,7 @@ bool Balanceable (vector<vector<Container>>& ship) {
     }
     sort(containers.begin(), containers.end(), compareContainer); //sort from heaviest to lightest
     int totalWeight = 0;
-    for (int i = 0; i < containers.size(); ++i) {
+    for (unsigned long long i = 0; i < containers.size(); ++i) {
         if ((containers.at(i).weight + totalWeight <= upper)) {
             totalWeight += containers.at(i).weight;
         }

@@ -36,7 +36,7 @@ void movements::on_pushButton_clicked()
         return;
     }
     answer = searchG(ship, 2, offload, onload); //1 is balance, 2 is load/offload
-    for (int i = 0; i < answer.position.size(); ++i) {
+    for (unsigned long long i = 0; i < answer.position.size(); ++i) {
         if (answer.position.at(i).first == -1) {
             answer.position.at(i).first = 17;
         }
@@ -47,7 +47,7 @@ void movements::on_pushButton_clicked()
     }
 
     int iter = 1;
-    for (int i = 0; i < answer.position.size(); i += 2) {
+    for (unsigned long long i = 0; i < answer.position.size(); i += 2) {
            QString move = QString::fromStdString(to_string(iter) + ". 23From position (" + to_string(abs(answer.position.at(i).first-8)) + ", " + to_string(answer.position.at(i).second+1) + ") to (" + to_string(abs(answer.position.at(i+1).first-8)) + ", " + to_string(answer.position.at(i+1).second+1) + ")");
              ui->listWidget->addItem(move);
              ++iter;

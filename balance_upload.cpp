@@ -53,6 +53,10 @@ void balance_upload::on_pushButton_clicked()
            }
            QTextStream in(&manifest);
 
+           QFile file ("C:/Users/pacow/OneDrive/Desktop/animationPrac.txt");
+           file.open(QIODevice::WriteOnly);
+           QTextStream out(&file);
+
            //char buffer[11]; //Size of string that is before the weight
            //char buffer3[3];
            //char buff_char;
@@ -97,13 +101,15 @@ void balance_upload::on_pushButton_clicked()
                        ship[i][j].weight = stoi(weight.toStdString()); //assign weight
                        //cout << "got through" << endl;
                    }
-                   if (ship[i][j].weight > 0) { //If there is a container then add it to the list of containers for balancing
+                   if (ship[i][j].weight > 0) { //If there is a container then add it to the list of containers for balancing and add to grid for animation portion
                        weights.push_back(ship[i][j]);
+                       out << "(" << i << "," << j << ")\n";
                    }
                    //weight_string = "";
                    weight = "";
                    }
            }
+                   out << "(-1,-1)";
                    manifest.close();
 }
 

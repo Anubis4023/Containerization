@@ -36,6 +36,7 @@ class Node {
 
       vector<string> moveSet;
       vector<pair<int, int>> position;
+      vector<string> name;
       vector<pair<int, int>> cost;
 
       vector<vector<Container>> state;

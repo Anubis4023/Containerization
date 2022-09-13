@@ -11,8 +11,8 @@ function syncReadFile(filename) {
   return arr;
 }
 
-export function findMoves() {
-    const locations = syncReadFile('animation.txt');
+/*export function findMoves() {
+    const locations = syncReadFile('asdfsad.txt');
     let positions = [];
 
     for (let i = 0; i < locations.length; ++i) {
@@ -21,7 +21,7 @@ export function findMoves() {
     }
 
     return positions;
-}
+}*/
 
 //console.log(findMoves());
 

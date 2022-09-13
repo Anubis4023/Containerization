@@ -42,6 +42,7 @@ function drawCrates(positions) { //Draws the crates that are already present
         context.fillStyle = generateRandomColor();
         context.fillRect(2 + 157.5*positions[i][0], 2 + 115*positions[i][1], cw, ch);
     }
+    
 }
 
 function animateMove() {} //Draws the animation of a crate moving

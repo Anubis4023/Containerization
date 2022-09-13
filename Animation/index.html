@@ -26,6 +26,9 @@ var ch = 112;
 //Set speed of animation
 var speed = 700;
 
+//White space
+var WhiteSpace;
+
 //var canvas = document.getElementById("myCanvas");
 //var context = canvas.getContext("2d");
 
@@ -60,12 +63,20 @@ function drawCrates(positions, context) { //Draws the crates that are already pr
     }
 }
 
+function isEmpty(x, y, context) {
+    let imgData = context.getImageData(x+50, y+50, 1, 1).data;
+    for (let i = 0; i < 4; ++i) {
+        if (imgData[i] != WhiteSpace[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 function xAnimate(pos1, pos2, context) {
     let negative = false;
     let x = 2 + pos1[1]*157.5;
     let y = 2 + pos1[0]*115;
-
-    
 
     let horizontal = pos2[1] - pos1[1]; //How many times to move across the x axis
     if (horizontal < 0) {
@@ -79,6 +90,7 @@ function xAnimate(pos1, pos2, context) {
         
         const id = setInterval(() => { //Animation to move across the x axis
             let imgData = context.getImageData(x, y, cw, ch);
+            //console.log(imgData);
             context.clearRect(x, y, cw, ch); 
             if (negative) {
                 x -= 157.5;
@@ -120,12 +132,16 @@ function yAnimate(pos1, pos2, context) {
     if (vertical > 0) {
         const id = setInterval(() => { //Animation to move across the x axis
             let imgData = context.getImageData(x, y, cw, ch);
+            let empty = true;
+            //console.log(imgData);
             context.clearRect(x, y, cw, ch); 
+            
             if (negative) {
                 y -= 115;
             } else {
                 y += 115;
             }
+
             context.putImageData(imgData, x, y);
 
             ++iter;
@@ -192,12 +208,31 @@ function readFile_loaded(input) {
         }
     }
 
+    //The setup for the program
     const input = document.getElementById('select-file');
     input.remove();
     let canvas = document.getElementById("myCanvas");
     let context = canvas.getContext("2d");
+    //Set up for the grid
+    var grid = new Array(8);
+    for (let i = 0; i < grid.length; ++i) {
+        grid[i] = new Array(12);
+    }
+    for (let i = 0; i < 8; ++i) {
+        for (let j = 0; j < 12; ++j) {
+            grid[i][j] = false;
+        }
+    }
+
+    for (let i = 0; i < positions.length; ++i) {
+        grid[positions[i][0]][positions[i][1]] = true;
+    }
+    console.log(grid);
 
     //THIS IS BASICALLY MAIN FOR NOW
+    WhiteSpace = context.getImageData(50, 50, 1, 1).data;
+    //console.log(WhiteSpace);
+
     drawBoard(context);
     drawCrates(positions, context);
 

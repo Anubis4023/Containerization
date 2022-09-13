@@ -20,10 +20,16 @@ public:
     explicit balanceCalc(QWidget *parent = nullptr);
     ~balanceCalc();
 
+
 private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
+
+    vector<string> findMovements(Node&, vector<vector<Container>>&);
+    int tallest(vector<vector<Container>>&, int);
+    string moveString(int, int, int, int);
+    void printGrid(vector<vector<Container>>&);
 
 private:
     Ui::balanceCalc *ui;
